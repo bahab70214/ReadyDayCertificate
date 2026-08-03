@@ -6,31 +6,39 @@ public class Main {
 
         for (Student student : students) {
             System.out.println(student);
-        }
-        String studentName = "Alice Johnson";
-        String studentEmail = "alice.johnson@example.com";
-
-        String certificatePath = "output/Alice_Johnson_Certificate.pdf";
-
-        CertificateGenerator.generateCertificate(
-                studentName,
+            String studentFirstName = student.getFirstName();
+            String studentLastName = student.getLastName();
+            String studentEmail = student.getEmail();
+            String certificatePath = "output/"+ studentFirstName+"_"+ studentLastName+"_Certificate.pdf";
+            CertificateGenerator.generateCertificate(
+                studentFirstName+" "+ studentLastName,
                 certificatePath,
                 "resources/otterbein-logo.png"
         );
 
-        OutlookDraftCreator.createDraftEmail(
+         OutlookDraftCreator.createDraftEmail(
                 studentEmail,
                 "READY Day Git/GitHub Workshop Certificate",
-                "Congratulations " + studentName + "!\n\n" +
+                "Congratulations " + studentFirstName+" "+ studentLastName + "!\n\n" +
                         "Attached is your certificate for completing the READY Day Git and GitHub Workshop.\n\n" +
                         "Best,\n" +
                         "Semih",
                 certificatePath
         );
-        CertificateGenerator.generateCertificate(
-                "Alice Johnson",
-                "output/Alice_Johnson_Certificate.pdf",
+         CertificateGenerator.generateCertificate(
+                studentFirstName+" "+ studentLastName,
+                certificatePath,
                 "resources/otterbein-logo.png"
         );
+
+        }
+        
+
+        
+
+        
+
+       
+       
     }
 }

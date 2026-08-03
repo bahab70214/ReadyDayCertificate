@@ -5,6 +5,8 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +50,13 @@ public class CertificateGenerator {
                 PDType1Font titleFont = new PDType1Font(Standard14Fonts.FontName.TIMES_BOLD);
                 PDType1Font regularFont = new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN);
                 PDType1Font italicFont = new PDType1Font(Standard14Fonts.FontName.TIMES_ITALIC);
+                LocalDate today = LocalDate.now();
+        
+                // 2. Define the desired format
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        
+                // 3. Format the date into a String
+                String formattedDate = today.format(formatter);
 
                 writeCenteredText(contentStream, "Certificate of Completion",
                         pageWidth, pageHeight - 230, 30, titleFont);
@@ -67,11 +76,11 @@ public class CertificateGenerator {
                 writeCenteredText(contentStream, "Using Git and GitHub to Showcase Your Work",
                         pageWidth, pageHeight - 490, 14, italicFont);
 
-                writeText(contentStream, "Date: ____________________",
-                        90, 120, 14, regularFont);
+               // Centers the date on its own line below the subtitle
+               writeCenteredText(contentStream, "Date: " + formattedDate,
+                        pageWidth, 140, 14, regularFont);
 
-                writeText(contentStream, "Presenter: ____________________",
-                        pageWidth - 280, 120, 14, regularFont);
+
             }
 
             document.save(outputPath);
