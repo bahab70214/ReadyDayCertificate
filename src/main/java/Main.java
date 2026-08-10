@@ -14,6 +14,7 @@ public class Main {
                 certificatePath,
                 "resources/otterbein-logo.png"
         );
+         
 
          OutlookDraftCreator.createDraftEmail(
                 studentEmail,
@@ -24,11 +25,7 @@ public class Main {
                         "Semih",
                 certificatePath
         );
-         CertificateGenerator.generateCertificate(
-                studentFirstName+" "+ studentLastName,
-                certificatePath,
-                "resources/otterbein-logo.png"
-        );
+       
 
         }
         
