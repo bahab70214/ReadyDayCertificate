@@ -64,7 +64,6 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        Student student = new Student(firstName, lastName, email);
     }
 
     /*
