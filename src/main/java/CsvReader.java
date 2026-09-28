@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,26 +62,27 @@ public class CsvReader {
      * 6. Add the returned Student object to the list.
      * 7. Return the list.
      */
-    public static List<Student> readStudentsFromCsv(String filePath) throws IOException {
+    public static List<Student> readStudentsFromCsv(String filePath) {
         // TODO: Create an empty list of Student objects.
 List<Student> students = new ArrayList<>();
         // TODO: Open the CSV file using BufferedReader and FileReader.
 
-BufferedReader br = new BufferedReader(new FileReader(filePath));
-
-        // TODO: Skip the header line.
-        br.skip();
-        // TODO: Read each line using a while loop.
-
-        // TODO: Convert each line into a Student object using parseStudent(line).
-
-        // TODO: Add each Student object to the list.
-
-        // TODO: Handle IOException by printing an error message.
-
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            // TODO: Skip the header line.
+            br.readLine(); // Skip the first line (header)
+            // TODO: Read each line using a while loop.
+            String line;
+            while ((line = br.readLine()) != null) {
+                // TODO: Convert each line into a Student object using parseStudent(line).
+                Student student = parseStudent(line);
+                // TODO: Add each Student object to the list.
+                students.add(student);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading CSV file: " + e.getMessage());
+        }
         // TODO: Return the list of students.
-
-        return null;
+        return students;
     }
 
     /*
@@ -113,15 +113,19 @@ BufferedReader br = new BufferedReader(new FileReader(filePath));
      */
     private static Student parseStudent(String line) {
         // TODO: Split the line by comma.
-
+        String[] parts = line.split(",");
         // TODO: Store the full name.
+        String fullName = parts[0].trim();
 
         // TODO: Store the email.
+        String email = parts[1].trim();
 
         // TODO: Split the full name into first name and last name.
-
+        String[] nameParts = fullName.split(" ");
+        String firstName = nameParts[0].trim();
+        String lastName = nameParts[1].trim();
+        Student student = new Student(firstName, lastName, email);  
         // TODO: Create and return a new Student object.
-
-        return null;
+        return student;
     }
 }
