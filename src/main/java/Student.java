@@ -37,6 +37,9 @@ public class Student {
      * - Create a private String for last name.
      * - Create a private String for email.
      */
+    private String firstName;
+    private String lastName;
+    private String email;
     
 
     /*
@@ -56,8 +59,12 @@ public class Student {
      * - Add three parameters to the constructor.
      * - Assign each parameter to the correct instance variable.
      */
-    public Student() {
+    public Student(String firstName, String lastName, String email) {
         // TODO: Replace this empty constructor with the correct constructor.
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        Student student = new Student(firstName, lastName, email);
     }
 
     /*
@@ -73,7 +80,7 @@ public class Student {
      */
     public String getFirstName() {
         // TODO: Return first name.
-        return null;
+        return firstName;
     }
 
     /*
@@ -89,7 +96,7 @@ public class Student {
      */
     public String getLastName() {
         // TODO: Return last name.
-        return null;
+        return lastName;
     }
 
     /*
@@ -105,7 +112,7 @@ public class Student {
      */
     public String getEmail() {
         // TODO: Return email.
-        return null;
+        return email;
     }
 
     /*
@@ -124,6 +131,6 @@ public class Student {
     @Override
     public String toString() {
         // TODO: Return a readable String representation of the student. such as name='Emily Davis', email='emily.davis@example.com'
-        return null;
+        return "name='" + firstName + " '" + lastName + "', " + "email='" + email + "'";
     }
 }
