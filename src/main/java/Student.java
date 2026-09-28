@@ -37,7 +37,8 @@ public class Student {
      * - Create a private String for last name.
      * - Create a private String for email.
      */
-    
+
+    private String name;
 
     /*
      * Constructor:

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,13 +63,15 @@ public class CsvReader {
      * 6. Add the returned Student object to the list.
      * 7. Return the list.
      */
-    public static List<Student> readStudentsFromCsv(String filePath) {
+    public static List<Student> readStudentsFromCsv(String filePath) throws IOException {
         // TODO: Create an empty list of Student objects.
-
+List<Student> students = new ArrayList<>();
         // TODO: Open the CSV file using BufferedReader and FileReader.
 
-        // TODO: Skip the header line.
+BufferedReader br = new BufferedReader(new FileReader(filePath));
 
+        // TODO: Skip the header line.
+        br.skip();
         // TODO: Read each line using a while loop.
 
         // TODO: Convert each line into a Student object using parseStudent(line).
